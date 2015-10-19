@@ -1,4 +1,4 @@
-﻿<table class="table table-hover">
+<table class="table table-hover">
     <thead>
         <tr>
             <th> Name </th>
@@ -11,7 +11,7 @@
         <tr ng-repeat="item in collection" class="point">
             <td>{{item.name}}</td>
             <td>{{item.deck}}</td>
-            <td>{{item.original_release_date}}</td>
+            <td>{{item.original_release_date | date:'short'}}</td>
             <td>{{item.platforms | platforms}}</td>
         </tr>
     </tbody>
