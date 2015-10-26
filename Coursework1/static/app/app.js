@@ -5,8 +5,13 @@
         {
             templateUrl: '/static/app/templates/collectionTemplate.html',
             controller: 'collectionController'
+        })
+        .when('/about',
+        {
+            templateUrl: '/static/app/templates/about.html',
+            controller: 'aboutController'
         });
-
+         
         $routeProvider.otherwise({ redirectTo: '/' });
 
     });

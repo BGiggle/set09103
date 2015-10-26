@@ -10,11 +10,19 @@ def home():
     return render_template('index.html')
 
 @app.route('/getCollection/', methods =['GET'])
-def about():
+def getCollection():
     start =  request.args.get('start', '')
     end =  request.args.get('end', '')
-    result  = { "result": [1,2,3,4,5,6,7,8,9,10]}       
     return requests.get("http://www.giantbomb.com/api/games/?api_key=6ca5ed55e20277bf7ba7d998bac94b41c446e806&format=json&limit=10&field_list=name,deck,id,original_release_date,platforms").content
+
+
+@app.route('/getGame/', methods =['GET'])
+def getGame():
+    gameId =  request.args.get('id', '')
+    return requests.get("http://www.giantbomb.com/api/game/" + gameId + "/?api_key=6ca5ed55e20277bf7ba7d998bac94b41c446e806&format=json&field_list=name,deck,id,original_release_date,description,image").content
+
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

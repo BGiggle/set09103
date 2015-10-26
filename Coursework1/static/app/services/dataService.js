@@ -5,8 +5,13 @@
             return $resource('/getCollection/', { start: start, end: end }).get();
         }
 
+        function getGame(id) {
+            return $resource('/getGame/', { id: id }).get();
+        }
+
         return {
-            getCollection: getCollection
+            getCollection: getCollection,
+            getGame: getGame
         }
     }
 ]);

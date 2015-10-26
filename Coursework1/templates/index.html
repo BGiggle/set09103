@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-cloak style="padding-left: 150px; padding-right: 150px">
     {% raw %}
-    <!--<nav class="navbar navbar-default" ng-controller="navController">
+    <nav class="navbar navbar-default" ng-controller="navController">
         <div class="container-fluid">
 
             <div class="navbar-header">
@@ -23,11 +23,8 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li>
-                        <a href="{{url_for('about')}}">About</a>
+                    <li ng-repeat="link in links">
+                        <a href="{{link.link}}">{{link.title}}</a>
                     </li>
                 </ul>
 
@@ -46,7 +43,7 @@
                 </ul>
             </div>
         </div>
-    </nav>-->
+    </nav>
 
     <ng-view></ng-view>
     {% endraw %}
@@ -62,9 +59,12 @@
     <!--App-->
     <script src="{{ url_for('static', filename='app/app.js') }}"></script>
     <script src="{{ url_for('static', filename='app/controllers/navController.js') }}"></script>
-    <script src="{{ url_for('static', filename='app/controllers/collectionController.js') }}"></script>
-<script src="{{ url_for('static', filename='app/services/dataService.js') }}"></script>
+<script src="{{ url_for('static', filename='app/controllers/collectionController.js') }}"></script>
+    <script src="{{ url_for('static', filename='app/controllers/gameModalController.js') }}"></script>
+    <script src="{{ url_for('static', filename='app/services/dataService.js') }}"></script>
     <script src="{{ url_for('static', filename='app/filters/platformFilter.js') }}"></script>
+    
+   
 
 
 
