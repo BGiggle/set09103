@@ -1,0 +1,18 @@
+﻿
+
+<div class="modal-header">
+   
+    <h3 class="modal-title">{{game.name}} <span ng-click="close()" class="point" style="float: right">X</span></h3>
+
+    <span>Release date: {{game.original_release_date | dateString:'dd/MM/yyyy'}}</span>
+</div>
+<div class="modal-body" style="min-height: 300px">
+    
+    <img src="{{game.image.medium_url}}" style="width: 304px; height: 228px; float: right">
+    <div ng-if="game.description" ng-bind-html="getGameDescription()"></div>
+    <div ng-if="!game.description">{{game.deck}}</div>
+    
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="close()">Close</button>
+</div>
