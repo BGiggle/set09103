@@ -9,26 +9,27 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/getCollection/', methods =['GET'])
-def getCollection():
+@app.route('/Games/', methods =['GET'])
+def getGames():
 
-    start = int(request.args.get('start', ''))
-    end = int(request.args.get('end', ''))
-    filter = json.loads(request.args.get('filter', ''))
+	start = int(request.args.get('start', ''))
+	end = int(request.args.get('end', ''))
+	filter = json.loads(request.args.get('filter', ''))
+	limit = end - start
 
-    limit = end - start
-    return jsonify(getGames(start, limit, filter));
+	games = getGamesSQL(start, limit, filter)
+	return jsonify(games);
     
 
 
-@app.route('/getGame/', methods =['GET'])
+@app.route('/Game/', methods =['GET'])
 def getGame():
     gameId = request.args.get('id', '')
     return requests.get("http://www.giantbomb.com/api/game/" + gameId + "/?api_key=6ca5ed55e20277bf7ba7d998bac94b41c446e806&format=json&field_list=name,deck,id,original_release_date,description,image").content
 
 
 tableHeadings = ["id", "name", "deck", "original_release_date", "platforms"]
-def getGames(start, limit, filter):
+def getGamesSQL(start, limit, filter):
     conn = sqlite3.connect('games.db')
     c = conn.cursor()
     
