@@ -24,7 +24,7 @@ def indexMultipleDocuments():
     docs = ast.literal_eval(request.data)
     
     for doc in docs:
-        requests.put("http://localhost:9200/gamesindex/" + docType + "/" + docId, data = doc).content
+        requests.put("http://localhost:9200/gamesindex/" + docType + "/" + doc["id"], data = doc).content
 
     
     #resp = requests.put("http://localhost:9200/gamesindex/" + docType + "/" + docId, data = request.data).content
