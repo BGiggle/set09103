@@ -11,4 +11,4 @@ doc = {
 docType = "game"
 docId = "1"
 
-requests.post("http://localhost:5000/indexDocument/?docType=" + docType +"&docId=" + docId ,  data = json.dumps(doc))
+requests.post("http://set09103cw.cloudapp.net:5000/indexDocument/?docType=" + docType +"&docId=" + docId ,  data = json.dumps(doc))
