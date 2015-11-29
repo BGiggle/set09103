@@ -13,9 +13,9 @@
         pageSize : 10
     }
 
-        $scope.getPage = function (start, end) {
+	$scope.getPage = function (start, end) {
         $scope.isLoading = true;
-        dataService.getCollection(start, end, $scope.filter).$promise.then(function (result) {
+        dataService.getGames(start, end, $scope.filter).$promise.then(function (result) {
             $scope.collection = result.games;
             $scope.page.totalItems = result.total;
             $scope.isLoading = false;

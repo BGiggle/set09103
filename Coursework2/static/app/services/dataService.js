@@ -1,17 +1,27 @@
 ﻿app.factory("dataService", [
     "$resource", function ($resource) {
 
-        function getCollection(start, end, filter) {
-            return $resource('/getCollection/', { start: start, end: end, filter: filter}).get();
+        function getGames(start, end, filter) {
+            return $resource('/Games/', { start: start, end: end, filter: filter}).get();
         }
 
         function getGame(id) {
-            return $resource('/getGame/', { id: id }).get();
+            return $resource('/Game/', { id: id }).get();
+        }
+        
+        function login(email, password){
+             return $resource('/Login/', { email: email, password: password}).get();
+        }
+        
+        function register(email, password){
+             return $resource('/Register/', { email: email, password: password}).get();
         }
 
         return {
-            getCollection: getCollection,
-            getGame: getGame
+            getGames: getGames,
+            getGame: getGame,
+            login: login,
+            register: register
         }
     }
 ]);

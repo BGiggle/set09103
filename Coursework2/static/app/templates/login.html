@@ -1,0 +1,25 @@
+<h1>{{title}}</h1>
+<h3 style="color:red">{{failedLoginMessage}}</h3>
+<form name="loginform" ng-submit="login()">
+  <div class="form-group">
+    <label for="loginEmail">Enter email address</label>
+    <input ng-model="loginModel.email" required type="email" class="form-control" id="loginEmail" placeholder="Email">
+  </div>
+  <div ng-if="registering" class="form-group">
+    <label for="loginEmailConf">Reenter email address</label>
+    <input ng-model="loginModel.confirmEmail" same-value-validate value-to-compare="loginModel.email" required type="email" class="form-control" id="loginEmailConf" placeholder="Email">  
+  </div>
+  <div class="form-group">
+    <label for="loginPassword">Password</label>
+    <input ng-model="loginModel.password" required type="password" class="form-control" id="loginPassword" placeholder="Password">
+  </div>
+  <div ng-if="registering" class="form-group">
+    <label for="loginPasswordConf">Reenter Password</label>
+    <input ng-model="loginModel.confirmPassword" same-value-validate value-to-compare="loginModel.password" required type="password" class="form-control" id="loginPasswordConf" placeholder="Password">
+  </div>
+  <div ng-if="!loginform.$valid"> Please fill out all fields correctly </div>
+  <button type="submit" class="btn btn-default" ng-disabled="!loginform.$valid" >{{title}}</button> 
+  <button ng-if="!registering" ng-click="register()" type="" class="btn btn-default">Register</button> 
+</form>
+
+
