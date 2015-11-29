@@ -9,7 +9,7 @@ def indexDocument():
     docId = str(request.args.get('docId', ''))
     docType = str(request.args.get('docType', ''))
     
-    resp = requests.put("http://localhost:9200/gamesIndex/" + docType + "/" + docId, data = request.data).content
+    resp = requests.put("http://localhost:9200/gamesindex/" + docType + "/" + docId, data = request.data).content
     
     print(resp)
     
