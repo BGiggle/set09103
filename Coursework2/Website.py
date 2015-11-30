@@ -60,8 +60,37 @@ def getGame():
     gameId = request.args.get('id', '')
     return requests.get("http://www.giantbomb.com/api/game/" + gameId + "/?api_key=6ca5ed55e20277bf7ba7d998bac94b41c446e806&format=json&field_list=name,deck,id,original_release_date,description,image").content
 
+platformFields = ["abbreviation", 
+"api_detail_url", 
+"company", 
+"date_added", 
+"deck", 
+"description", 
+"id", 
+"image", 
+"install_base", 
+"name", 
+"online_support", 
+"original_price", 
+"release_date", 
+"site_detail_url"]
 
-
+@app.route('/Platforms/', methods =['GET'])
+def getPlatforms():
+    conn = sqlite3.connect('games.db')
+    c = conn.cursor()
+    platforms = c.execute("select * from platforms").fetchall()
+    print(platforms)
+    result = {"platforms" : [] }
+    for i in platforms:
+        platform = {}
+        index = 0;
+        for h in platformFields:
+            platform[h] = i[index]
+            index += 1
+        result["platforms"].append(platform)
+    
+    return jsonify(result)
 
 tableHeadings = ["id", "name", "deck", "original_release_date", "platforms"]
 def getGamesSQL(start, limit, filter):

@@ -36,12 +36,10 @@
     <ng-view></ng-view>
     {% endraw %}
     
-<script>
-    globalParams = {};
-    globalParams.isLoggedIn = false;
-</script>
+
 
 <!--Libraries-->
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -55,6 +53,7 @@
 <script src="{{ url_for('static', filename='app/controllers/loginController.js') }}"></script>
 <script src="{{ url_for('static', filename='app/controllers/collectionController.js') }}"></script>
 <script src="{{ url_for('static', filename='app/controllers/gameModalController.js') }}"></script>
+<script src="{{ url_for('static', filename='app/controllers/platformController.js') }}"></script>
 <script src="{{ url_for('static', filename='app/services/dataService.js') }}"></script>
 <script src="{{ url_for('static', filename='app/filters/platformFilter.js') }}"></script>
 <script src="{{ url_for('static', filename='app/directives/sameValueValidate.js') }}"></script>

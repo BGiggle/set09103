@@ -16,12 +16,17 @@
         function register(email, password){
              return $resource('/Register/', { email: email, password: password}).get();
         }
+        
+        function getPlatforms(email, password){
+             return $resource('/Platforms/').get();
+        }
 
         return {
             getGames: getGames,
             getGame: getGame,
             login: login,
-            register: register
+            register: register,
+            getPlatforms: getPlatforms
         }
     }
 ]);

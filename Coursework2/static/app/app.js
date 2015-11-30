@@ -1,10 +1,19 @@
-﻿var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap'])
+﻿globalParams = {};
+globalParams.isLoggedIn = false;
+
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap'])
     .config(function ($routeProvider, $locationProvider) {
 
         $routeProvider.when('/',
         {
             templateUrl: '/static/app/templates/collectionTemplate.html',
             controller: 'collectionController',
+            redirectTo : redirectIfNotLoggedIn,
+            caseInsensitiveMatch: true
+        }).when('/Platforms',
+        {
+            templateUrl: '/static/app/templates/platformTemplate.html',
+            controller: 'platformController',
             redirectTo : redirectIfNotLoggedIn,
             caseInsensitiveMatch: true
         })
@@ -27,7 +36,6 @@
     });
     
 var redirectIfNotLoggedIn = function (routeParams, path) {
-    console.log("redirectIfNotLoggedIn")
     if (globalParams.isLoggedIn) {
         return path;
     } else {

@@ -7,7 +7,11 @@
         },
         {
             title: "About",
-            link: "#/about"
+            link: "#/About"
+        },
+        {
+            title: "Platforms",
+            link: "#/Platforms"
         },
     ];
 

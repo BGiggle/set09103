@@ -1,0 +1,43 @@
+<form class="form-inline" ng-submit="changeDisplay(chosen)">
+    <div class="form-group">
+        <label for="ipp">Data to visualise</label>
+        <select id="ipp" ng-model="chosen" class="form-control" ng-options="i for i in visulisations"></select>
+    </div>
+    <button type="submit" class="btn btn-default">Visualise</button>
+</form>
+
+<div id="d3Canvas"></div>
+
+<style type="text/css">
+
+text {
+  font-size: 11px;
+  pointer-events: none;
+}
+
+text.parent {
+  fill: #1f77b4;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #999;
+  pointer-events: all;
+}
+
+circle.parent {
+  fill: #1f77b4;
+  fill-opacity: .1;
+  stroke: steelblue;
+}
+
+circle.parent:hover {
+  stroke: #ff7f0e;
+  stroke-width: .5px;
+}
+
+circle.child {
+  pointer-events: none;
+}
+
+    </style>
